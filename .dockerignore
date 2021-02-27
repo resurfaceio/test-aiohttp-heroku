@@ -1,0 +1,55 @@
+.DS_Store
+*.py[co]
+
+# Packages
+*.egg
+*.egg-info
+dist
+build
+eggs
+parts
+var
+sdist
+develop-eggs
+.installed.cfg
+.pytest_cache
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+
+#Translations
+*.mo
+
+# Emacs backup files
+*~
+
+# IDEA / PyCharm IDE
+.idea/
+*.iml
+
+# VS Code
+.vscode
+
+# Virtualenvs
+env
+venv
+.venv
+
+docs/source/reference/services
+tests/coverage.xml
+tests/nosetests.xml
+
+# cache and META
+.mypy_cache
+pip-*
+__pycache__
+
+# coverage
+htmlcov
+
+# logs
+*.log
