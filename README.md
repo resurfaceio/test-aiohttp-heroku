@@ -1,4 +1,4 @@
-# Integration testing app for python aiohttp usagelogger
+# Integration testing app for aiohttp | Usagelogger
 
 ## Run the project (Development)
 
