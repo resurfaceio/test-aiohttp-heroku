@@ -1,5 +1,6 @@
-from aiohttp import web
+
+from aiohttp.web_response import json_response
 
 
-async def index(request):
-    return web.Response(text="It works!!")
+async def ping(request):
+    return json_response({"msg": "pong"})
