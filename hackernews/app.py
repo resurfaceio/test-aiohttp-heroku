@@ -33,7 +33,7 @@ async def close_database(app: web.Application) -> None:
 def init_app(argv=None) -> web.Application:
     app = web.Application()
     cors = aiohttp_cors.setup(app)
-    print(os.environ["DATABASE_URL"])
+    print(os.environ)
     init_config(app, argv)
     init_routes(app, cors)
     app.on_startup.extend([init_database])
