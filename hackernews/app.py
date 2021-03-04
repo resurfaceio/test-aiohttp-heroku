@@ -10,33 +10,35 @@ from hackernews.utils import get_config
 
 def init_config(app: web.Application, argv=None) -> None:
 
-    db_info = os.environ.get("DATABASE_URL", None)
-    if db_info:
-        db_conf = {"postgres": {}}
-        db_info = db_info.split(":")
-        password, host = db_info[2].split("@")
-        port, database = db_info[-1].split("/")
-        user = db_info[1][2:]
+    # db_info = os.environ.get("DATABASE_URL", None)
+    # if db_info:
+    #     db_conf = {"postgres": {}}
+    #     db_info = db_info.split(":")
+    #     password, host = db_info[2].split("@")
+    #     port, database = db_info[-1].split("/")
+    #     user = db_info[1][2:]
 
-        db_conf["postgres"]["user"] = user
-        db_conf["postgres"]["host"] = host
-        db_conf["postgres"]["port"] = port
-        db_conf["postgres"]["database"] = database
-        db_conf["postgres"]["password"] = password
+    #     db_conf["postgres"]["user"] = user
+    #     db_conf["postgres"]["host"] = host
+    #     db_conf["postgres"]["port"] = port
+    #     db_conf["postgres"]["database"] = database
+    #     db_conf["postgres"]["password"] = password
 
-        app["config"] = db_conf
+    #     app["config"] = db_conf
 
-    else:
-        app["config"] = get_config(argv)
+    # else:
+    # app["config"] = get_config(argv)
+    pass
 
 
 async def init_database(app: web.Application) -> None:
     """
     This is signal for success creating connection with database
     """
-    config = app["config"]["postgres"]
 
-    engine = await aiopg.sa.create_engine(**config)
+    engine = await aiopg.sa.create_engine(
+        os.environ.get("DATABASE_URL", "postgres://postgres:postgres@postgres/postgres")
+    )
     app["db"] = engine
 
 
