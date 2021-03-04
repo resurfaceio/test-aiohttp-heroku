@@ -12,17 +12,17 @@ def init_config(app: web.Application, argv=None) -> None:
 
     db_info = os.environ.get("DATABASE_URL", None)
     if db_info:
-        db_conf = {}
+        db_conf = {"postgres": {}}
         db_info = db_info.split(":")
         password, host = db_info[2].split("@")
         port, database = db_info[-1].split("/")
         user = db_info[1][2:]
 
-        db_conf["user"] = user
-        db_conf["host"] = host
-        db_conf["port"] = port
-        db_conf["database"] = database
-        db_conf["password"] = password
+        db_conf["postgres"]["user"] = user
+        db_conf["postgres"]["host"] = host
+        db_conf["postgres"]["port"] = port
+        db_conf["postgres"]["database"] = database
+        db_conf["postgres"]["password"] = password
 
         app["config"] = db_conf
 
