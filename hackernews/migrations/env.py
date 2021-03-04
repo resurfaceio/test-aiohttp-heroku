@@ -50,6 +50,11 @@ def run_migrations_online():
     In this scenario we need to create an Engine
     and associate a connection with the context.
     """
+    url = os.environ.get("DATABASE_URL")  # config.get_main_option("sqlalchemy.url")
+
+    config_dict = dict()
+    config_dict["sqlalchemy.url"] = url
+
     connectable = engine_from_config(
         config.get_section(config.config_ini_section),
         prefix="sqlalchemy.",
