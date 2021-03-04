@@ -1,5 +1,6 @@
 from __future__ import with_statement
 
+import os
 from logging.config import fileConfig
 
 # import here you table files for autodetect your tables by the alembic
@@ -37,7 +38,7 @@ def run_migrations_offline():
     Calls to context.execute() here emit the given string to the
     script output.
     """
-    url = config.get_main_option("sqlalchemy.url")
+    url = os.environ.get("DATABASE_URL")  # config.get_main_option("sqlalchemy.url")
     context.configure(url=url, target_metadata=target_metadata, literal_binds=True)
 
     with context.begin_transaction():

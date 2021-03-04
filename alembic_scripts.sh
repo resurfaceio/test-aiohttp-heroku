@@ -1,3 +1,3 @@
 #!/bin/bash
-alembic revision --autogenerate
-alembic upgrade head
+alembic -n alembic:dev revision --autogenerate
+alembic -n alembic:dev upgrade head
