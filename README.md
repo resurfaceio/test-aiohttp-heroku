@@ -33,11 +33,16 @@ Now you can access the app from: `http://localhost:8080/`
 
 ## Heroku Deployment
 
+Create Heroku app
+
+```
+heroku create aiohttp-resurface
+```
+
 ```
 heroku container:login
-heroku container:push web --app $HEROKU_APP_NAME
-heroku container:release web --app $HEROKU_APP_NAME
-heroku config:set WORKERS=2 --app $HEROKU_APP_NAME
+heroku stack:set container -a aiohttp-resurface
+git push heroku master
 ```
 
 # HTTP Health Check
