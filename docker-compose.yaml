@@ -17,6 +17,7 @@ services:
   hackernews:
     build: .
     container_name: hackernews
+
     volumes:
       - ./:/app
     command: gunicorn hackernews.app:app -b :8080 --worker-class aiohttp.GunicornWebWorker --reload --access-logfile -
@@ -24,6 +25,8 @@ services:
       - '8080:8080'
     depends_on:
       - postgres
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@postgres/postgres
 
 volumes:
   dbdata:
