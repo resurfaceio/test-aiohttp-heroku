@@ -7,8 +7,8 @@ build:
     web: Dockerfile
 release:
   command:
-    - hackernews alembic -n alembic:dev revision --autogenerate
-    - hackernews alembic -n alembic:dev upgrade head
+    - docker exec -it hackernews alembic -n alembic:dev revision --autogenerate
+    - docker exec -it hackernews alembic -n alembic:dev upgrade head
   image: web
 run:
   web: gunicorn hackernews.app:app -b :8080 --worker-class aiohttp.GunicornWebWorker --reload --access-logfile -
