@@ -11,4 +11,4 @@ build:
 #     - docker exec -it hackernews alembic -n alembic:dev upgrade head
 #   image: web
 run:
-  web: gunicorn hackernews.app:app -b :8080 --worker-class aiohttp.GunicornWebWorker --reload --access-logfile -
+  web: gunicorn hackernews.app:app -b :$PORT --worker-class aiohttp.GunicornWebWorker --reload --access-logfile -
