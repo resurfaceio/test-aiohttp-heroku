@@ -14,10 +14,10 @@ down:
 	@docker-compose down
 
 migrations:
-	@docker exec -it hackernews alembic -n alembic:dev revision --autogenerate;
+	@docker exec -it hackernews alembic revision --autogenerate;
 
 migrate:
-	@docker exec -it hackernews alembic -n alembic:dev upgrade head;
+	@docker exec -it hackernews alembic upgrade head;
 
 psql:
 	@docker exec -it hackernews_postgres psql -U postgres
