@@ -1,10 +1,11 @@
 setup:
   addons:
     - plan: heroku-postgresql
-      as: DATABASE
 build:
   docker:
     web: Dockerfile
+  config:
+    DATABASE_URL: postgres://postgres:postgres@postgres/postgres
 release:
   command:
     - bash ./alembic_scripts.sh
