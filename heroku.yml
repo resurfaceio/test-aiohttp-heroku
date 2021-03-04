@@ -5,10 +5,9 @@ setup:
 build:
   docker:
     web: Dockerfile
-# release:
-#   command:
-#     - docker exec -it hackernews alembic -n alembic:dev revision --autogenerate
-#     - docker exec -it hackernews alembic -n alembic:dev upgrade head
-#   image: web
+release:
+  command:
+    - bash ./alembic_scripts.sh
+  image: web
 run:
   web: gunicorn hackernews.app:app -b :$PORT --worker-class aiohttp.GunicornWebWorker --reload --access-logfile -
