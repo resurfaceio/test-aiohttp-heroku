@@ -55,6 +55,4 @@ htmlcov
 *.log
 
 # migrations
-**/migrations/**
-!**/migrations
-!**/migrations/versions
+migrations/versions/**
