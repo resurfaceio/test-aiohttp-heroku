@@ -37,12 +37,28 @@ Create Heroku app
 
 ```
 heroku create aiohttp-resurface
+
 ```
+
+Create PGSQL on Herkoku
+
+```
+heroku addons:create heroku-postgresql:hobby-dev
+```
+
+Push to Heroku
 
 ```
 heroku container:login
 heroku stack:set container -a aiohttp-resurface
 git push heroku master
+```
+
+OR
+
+```
+heroku container:push web --app aiohttp-resurface
+heroku container:release web --app aiohttp-resurface
 ```
 
 # HTTP Health Check
