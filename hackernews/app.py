@@ -11,9 +11,9 @@ from hackernews.utils import get_config
 def init_config(app: web.Application, argv=None) -> None:
 
     db_info = os.environ.get("DATABASE_URL", None)
-    print(db_info)
     if db_info:
         db_conf = {}
+        db_info = db_info.split(":")
         password, host = db_info[2].split("@")
         port, database = db_info[-1].split("/")
         user = db_info[1][2:]
