@@ -54,13 +54,6 @@ heroku stack:set container -a aiohttp-resurface
 git push heroku master
 ```
 
-OR
-
-```
-heroku container:push web --app aiohttp-resurface
-heroku container:release web --app aiohttp-resurface
-```
-
 # HTTP Health Check
 
 Request:
