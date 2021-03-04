@@ -55,4 +55,5 @@ htmlcov
 *.log
 
 # migrations
-migrations/versions/**
+
+**/migrations/versions/*.py
