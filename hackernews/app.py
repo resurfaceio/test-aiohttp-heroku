@@ -3,6 +3,7 @@ import os
 import aiohttp_cors
 import aiopg.sa
 from aiohttp import web
+from usagelogger.aiohttp import HttpLoggerForAIOHTTP
 
 from hackernews.routes import init_routes
 from hackernews.utils import get_config
@@ -51,7 +52,13 @@ async def close_database(app: web.Application) -> None:
 
 
 def init_app(argv=None) -> web.Application:
-    app = web.Application()
+    app = web.Application(
+        middlewares=[
+            HttpLoggerForAIOHTTP(
+                url="http://localhost:4001/message", rules="include debug"
+            )
+        ]
+    )
     cors = aiohttp_cors.setup(app)
 
     init_config(app, argv)
