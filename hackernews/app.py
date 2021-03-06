@@ -6,29 +6,9 @@ from aiohttp import web
 from usagelogger.aiohttp import HttpLoggerForAIOHTTP
 
 from hackernews.routes import init_routes
-from hackernews.utils import get_config
 
 
 def init_config(app: web.Application, argv=None) -> None:
-
-    # db_info = os.environ.get("DATABASE_URL", None)
-    # if db_info:
-    #     db_conf = {"postgres": {}}
-    #     db_info = db_info.split(":")
-    #     password, host = db_info[2].split("@")
-    #     port, database = db_info[-1].split("/")
-    #     user = db_info[1][2:]
-
-    #     db_conf["postgres"]["user"] = user
-    #     db_conf["postgres"]["host"] = host
-    #     db_conf["postgres"]["port"] = port
-    #     db_conf["postgres"]["database"] = database
-    #     db_conf["postgres"]["password"] = password
-
-    #     app["config"] = db_conf
-
-    # else:
-    # app["config"] = get_config(argv)
     pass
 
 
@@ -55,7 +35,10 @@ def init_app(argv=None) -> web.Application:
     app = web.Application(
         middlewares=[
             HttpLoggerForAIOHTTP(
-                url="http://localhost:4001/message", rules="include debug"
+                url=os.environ.get(
+                    "USAGE_LOGGERS_URL",
+                ),
+                rules="include debug",
             )
         ]
     )
