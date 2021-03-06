@@ -7,6 +7,9 @@ all: run
 run:
 	@docker-compose up
 
+upgrade-run:
+	@docker-compose up --force-recreate --build hackernews
+
 stop:
 	@docker-compose stop
 
