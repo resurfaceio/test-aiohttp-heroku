@@ -1,9 +1,9 @@
 aiohttp==3.3.2
 aiohttp_cors==0.7.0
 alembic==0.9.10
-aiopg==0.14.0
+aiopg==1.1.0
 SQLAlchemy==1.2.9
-psycopg2-binary==2.7.5
+psycopg2-binary
 alembic==0.9.10
 gunicorn==19.9.0
 graphene==2.1.8
