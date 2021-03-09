@@ -1,8 +1,8 @@
-# Integration testing app for aiohttp | Usagelogger
+# test-aiohttp-app
 
-## Run the project (Development Setup)
+## Environment Setup
 
-Note: You should be on the project root directory
+_Note: You should be on the project root directory_
 
 ### ENV variables
 
@@ -13,7 +13,7 @@ USAGE_LOGGERS_URL = http://<resurface-host>/message
 DATABASE_URL = postgres://postgres:postgres@postgres/postgres
 ```
 
-### Resurface setup
+### Resurface setup using ngrok
 
 You can use `ngrok` as a tunnel for `resurface`
 
@@ -28,25 +28,25 @@ USAGE_LOGGERS_URL = https://<ngrok-id>.ngrok.io/message
 DATABASE_URL = postgres://postgres:postgres@postgres/postgres
 ```
 
-### Run the application
+## Run the application
+
+Execute the following commands in bash to get started.
 
 ```
 make
 ```
 
-### Make migrations
+### Make database migrations
 
 ```
 make migrations
-```
 
-### Make migrate
-
-```
 make migrate
 ```
 
-### Upgrade on logger change
+### Update app on logger change
+
+You can run the following command to build & run the application without cache.
 
 ```
 make upgrade-run
@@ -54,7 +54,7 @@ make upgrade-run
 
 Now you can access the app from: `http://localhost/`
 
-## Heroku Deployment
+# Heroku Deployment
 
 Create Heroku app
 
@@ -90,9 +90,3 @@ Response:
 ```
 {"msg": "pong"}
 ```
-
-# Todo
-
-- [x] Add general query and mutations
-- [ ] Add authentication
-- [ ] Add authenticated query and mutations
