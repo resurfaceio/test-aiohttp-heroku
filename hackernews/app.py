@@ -35,9 +35,6 @@ def init_app(argv=None) -> web.Application:
     app = web.Application(
         middlewares=[
             HttpLoggerForAIOHTTP(
-                url=os.environ.get(
-                    "USAGE_LOGGERS_URL",
-                ),
                 rules="include debug",
             )
         ]
