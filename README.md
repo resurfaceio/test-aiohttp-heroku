@@ -1,74 +1,40 @@
 # test-aiohttp-app
+Test GraphQL API built with AIOHTTP
 
-## Environment Setup
+## Configure Environment
 
-_Note: You should be on the project root directory_
-
-### ENV variables
-
-**IMPORTANT:** change the environment variables in `.env` file
+Install your Resurface database: https://resurface.io/pilot-edition
 
 ```
-USAGE_LOGGERS_URL = http://<resurface-host>/message
-DATABASE_URL = postgres://postgres:postgres@postgres/postgres
+# configure to point to your Resurface database host
+export USAGE_LOGGERS_URL=http://<resurface-host>:4001/message
 ```
 
-### Resurface setup using ngrok
-
-You can use `ngrok` as a tunnel for `resurface`
-
-```bash
-ngrok http 4001
-```
-
-now set the environment variables
+## Deploy Locally
 
 ```
-USAGE_LOGGERS_URL = https://<ngrok-id>.ngrok.io/message
-DATABASE_URL = postgres://postgres:postgres@postgres/postgres
+make start     # rebuild and start containers
+make ping      # make simple ping request
+make bash      # open shell session
+make logs      # follow container logs
+make stop      # halt and remove containers
 ```
 
-## Run the application
+## Deploy to Heroku
 
-Execute the following commands in bash to get started.
-
-```
-make
-```
-
-### Make database migrations
-
-```
-make migrations
-
-make migrate
-```
-
-### Update app on logger change
-
-You can run the following command to build & run the application without cache.
-
-```
-make upgrade-run
-```
-
-Now you can access the app from: `http://localhost/`
-
-# Heroku Deployment
-
-Create Heroku app
+1. Create Heroku app
 
 ```
 heroku create aiohttp-resurface
 ```
 
-Create PGSQL on Herkoku
+2. Create PGSQL on Herkoku
 
 ```
 heroku addons:create heroku-postgresql:hobby-dev -a aiohttp-resurface
 ```
 
-Push to Heroku
+3. Push to Heroku
 
 ```
 heroku container:login
@@ -77,16 +43,12 @@ heroku config:set USAGE_LOGGERS_URL="http://marina:4001/message"
 git push heroku master
 ```
 
-# HTTP Health Check
-
-Request:
-
-```bash
-curl http://localhost:8000/ping
+4. Make ping request
+```
+curl "http://aiohttp-resurface.herokuapp.com/ping"
 ```
 
-Response:
-
+5. Delete Heroku app
 ```
-{"msg": "pong"}
+heroku apps:destroy aiohttp-resurface
 ```

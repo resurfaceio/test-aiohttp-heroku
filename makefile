@@ -1,26 +1,28 @@
 PROJECT_NAME=hackernews
 
-# Common
-
-all: run
-
-run:
-	@docker-compose up
-
-upgrade-run:
-	@docker-compose up --force-recreate --build hackernews
+start:
+	@docker-compose up --force-recreate --build --detach
+	@docker exec -it hackernews alembic revision --autogenerate
+	@docker exec -it hackernews alembic upgrade head
 
 stop:
 	@docker-compose stop
-
-down:
 	@docker-compose down
+	@docker rmi test-aiohttp-heroku_hackernews
 
-migrations:
-	@docker exec -it hackernews alembic revision --autogenerate;
+bash:
+	@docker exec -it hackernews bash
 
-migrate:
-	@docker exec -it hackernews alembic upgrade head;
+logs:
+	@docker logs -f hackernews
+
+ping:
+	@echo curl "http://localhost/ping"
+	@curl "http://localhost/ping"
 
 psql:
 	@docker exec -it hackernews_postgres psql -U postgres
+
+restart:
+	@docker-compose stop
+	@docker-compose up
