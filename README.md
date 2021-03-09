@@ -6,7 +6,7 @@ _Note: You should be on the project root directory_
 
 ### ENV variables
 
-change the environment variables in `.env` file
+**IMPORTANT:** change the environment variables in `.env` file
 
 ```
 USAGE_LOGGERS_URL = http://<resurface-host>/message
