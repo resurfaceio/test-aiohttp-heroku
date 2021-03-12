@@ -8,7 +8,6 @@ start:
 stop:
 	@docker-compose stop
 	@docker-compose down
-	@docker rmi test-aiohttp-heroku_hackernews
 
 bash:
 	@docker exec -it hackernews bash
