@@ -1,5 +1,10 @@
 # test-aiohttp-app
-Test GraphQL API built with AIOHTTP
+Example GraphQL API built with AIOHTTP
+
+## Requirements
+
+* Install `docker` and `docker-compose`
+* Sign up for [Resurface Pilot Edition](https://resurface.io/pilot-edition) access
 
 ## Deploy Locally
 
