@@ -1,13 +1,17 @@
 PROJECT_NAME=hackernews
 
 start:
-	@docker-compose up --force-recreate --build --detach
+	@rm -f ./hackernews/migrations/versions/*_.py
+	@docker build -t test-aiohttp-hackernews --no-cache .
+	@docker-compose up --detach
+	@until docker exec -it hackernews_postgres psql -q -U postgres -c "select 1 as postgres_ready" -d postgres; do sleep 1; done
 	@docker exec -it hackernews alembic revision --autogenerate
 	@docker exec -it hackernews alembic upgrade head
 
 stop:
 	@docker-compose stop
-	@docker-compose down
+	@docker-compose down --volumes
+	@docker image rmi -f test-aiohttp-hackernews:latest
 
 bash:
 	@docker exec -it hackernews bash
