@@ -12,7 +12,6 @@ Example GraphQL API built with AIOHTTP
 * 4002 - Resurface API Explorer
 * 4001 - Resurface microservice
 * 4000 - Trino database UI
-* 5432 - Postgresql database
 
 ## Deploy Locally
 
