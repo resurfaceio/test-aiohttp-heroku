@@ -6,25 +6,25 @@ from hackernews.news.db_utils import select_all_news, select_news_by_id
 
 
 class NewsQuery(graphene.ObjectType):
-    news = graphene.Field(
+    news_by_id = graphene.Field(
         News,
-        pk=graphene.Argument(graphene.Int),
+        id=graphene.Argument(graphene.String),
         description="A news with given id",
     )
 
-    async def resolve_news(self, info: ResolveInfo, pk) -> RowProxy:
+    async def resolve_news_by_id(self, info: ResolveInfo, id) -> RowProxy:
         app = info.context["request"].app
         async with app["db"].acquire() as conn:
-            return await select_news_by_id(conn, pk)
+            return await select_news_by_id(conn, int(id))
 
 
 class NewsAllQuery(graphene.ObjectType):
-    newss = graphene.List(
+    all_news = graphene.List(
         News,
         description="A news list",
     )
 
-    async def resolve_newss(
+    async def resolve_all_news(
         self,
         info: ResolveInfo,
     ) -> RowProxy:

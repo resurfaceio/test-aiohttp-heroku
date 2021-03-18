@@ -7,4 +7,4 @@ class Mutations(graphene.ObjectType):
     All created mutations
     """
 
-    create_news = CreateNews.Field(description="News for tech enthusiast hackers")
+    add_news = CreateNews.Field(description="News for tech enthusiast hackers")
