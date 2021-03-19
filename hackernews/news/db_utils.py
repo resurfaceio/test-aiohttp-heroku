@@ -3,8 +3,8 @@ from aiopg.sa.result import RowProxy
 from hackernews.news.tables import news
 
 
-async def select_news_by_id(conn: SAConn, pk: int) -> RowProxy:
-    cursor = await conn.execute(news.select().where(news.c.id == pk))
+async def select_news_by_id(conn: SAConn, id: int) -> RowProxy:
+    cursor = await conn.execute(news.select().where(news.c.id == id))
     item = await cursor.fetchone()
     return item
 
