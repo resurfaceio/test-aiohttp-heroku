@@ -1,6 +1,7 @@
 PROJECT_NAME=hackernews
 
 start:
+	@docker stop resurface
 	@rm -f ./hackernews/migrations/versions/*_.py
 	@docker build -t test-aiohttp-hackernews --no-cache .
 	@docker-compose up --detach
