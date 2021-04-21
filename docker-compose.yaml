@@ -2,7 +2,7 @@ version: '3.2'
 
 services:
   resurface:
-    image: docker.resurface.io/release/pilot
+    image: docker.resurface.io/release/pilot:2.1.24
     container_name: hackernews_resurface
     ports:
       - '4000:4000'
@@ -23,7 +23,7 @@ services:
       - 5432
 
   hackernews:
-    image: test-aiohttp-hackernews:latest
+    image: test-aiohttp-hackernews
     container_name: hackernews
     command: gunicorn hackernews.app:app -b :8080 --worker-class aiohttp.GunicornWebWorker --reload --access-logfile -
     ports:
