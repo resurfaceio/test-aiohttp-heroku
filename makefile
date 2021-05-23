@@ -21,7 +21,6 @@ logs:
 	@docker logs -f hackernews
 
 ping:
-	@echo curl "http://localhost/ping"
 	@curl "http://localhost/ping"
 
 psql:
