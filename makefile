@@ -12,7 +12,7 @@ start:
 stop:
 	@docker-compose stop
 	@docker-compose down --volumes
-	@docker image rmi -f test-aiohttp-hackernews:latest
+	@docker image rmi -f test-aiohttp-hackernews
 
 bash:
 	@docker exec -it hackernews bash
