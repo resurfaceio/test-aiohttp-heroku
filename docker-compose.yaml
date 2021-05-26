@@ -3,7 +3,7 @@ version: '3.2'
 services:
   resurface:
     image: resurfaceio/pilot:2.2.8
-    container_name: hackernews_resurface
+    container_name: aiohttp_resurface
     ports:
       - '4000:4000'
       - '4001:4001'
@@ -11,7 +11,7 @@ services:
 
   postgres:
     image: postgres:10
-    container_name: hackernews_postgres
+    container_name: aiohttp_postgres
     volumes:
       - '/var/run/postgres/postgres.sock:/var/run/postgres/postgres.sock'
       - 'dbdata:/var/lib/postgresql/data'
@@ -22,9 +22,9 @@ services:
     ports:
       - 5432
 
-  hackernews:
-    image: test-aiohttp-hackernews
-    container_name: hackernews
+  aiohttp:
+    image: test-aiohttp
+    container_name: aiohttp
     ports:
       - '80:8080'
     depends_on:
