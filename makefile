@@ -21,6 +21,7 @@ logs:
 	@docker logs -f aiohttp
 
 ping:
+	#todo switch to GraphQL post
 	@curl "http://localhost/ping"
 
 psql:
@@ -29,3 +30,6 @@ psql:
 restart:
 	@docker-compose stop
 	@docker-compose up --detach
+
+test:
+	@docker exec -it aiohttp python3 test.py

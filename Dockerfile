@@ -1,4 +1,4 @@
-FROM python:3.7
+FROM resurfaceio/python:2.3.0
 WORKDIR /app
 ADD . /app
 RUN python setup.py develop && pip install git+https://github.com/resurfaceio/logger-python@master#egg=usagelogger
