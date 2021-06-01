@@ -11,7 +11,7 @@ start:
 
 stop:
 	@docker-compose stop
-	@docker-compose down --volumes
+	@docker-compose down --volumes --remove-orphans
 	@docker image rmi -f test-aiohttp
 
 bash:
